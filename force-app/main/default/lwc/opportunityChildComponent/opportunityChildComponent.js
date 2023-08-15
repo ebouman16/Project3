@@ -19,8 +19,8 @@ export default class OpportunityChildComponent extends LightningElement {
         this.oppList = result.data.map(element=>({
             opportunityId:element.Id,
             Name:element.Name,
-            Type:element.Type_of_Opportunity__c,
-            Offer:element.Monthly_Price_offered__c
+            Type_of_Opportunity__c:element.Type_of_Opportunity__c,
+            Monthly_Price_offered__c:element.Monthly_Price_offered__c
         }));
         this.error = undefined;
     } else if (result.error) {
