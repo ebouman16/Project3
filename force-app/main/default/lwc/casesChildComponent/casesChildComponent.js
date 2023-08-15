@@ -4,7 +4,7 @@ import getCases from '@salesforce/apex/CaseData.getCases';
 export default class CasesChildComponent extends LightningElement {
 
     colConfigs = [
-        {label: "Case Number", fieldName: "CaseNumber", type: "number"},
+        {label: "Case Number", fieldName: "CaseNumber", type: "text"},
         {label: "Subject", fieldName: "Subject", type: "text"},
         {label: "Status", fieldName: "Status", type: "text"}
     ];
@@ -16,12 +16,16 @@ export default class CasesChildComponent extends LightningElement {
     wired_caseList(result) {
     this.caseList = [];
     if (result.data) {
-        this.caseList = result.data;
+        this.caseList = result.data.map(element=>({
+            caseId:element.Id,
+            CaseNumber:element.CaseNumber,
+            Subject:element.Subject,
+            Status:element.Status
+        }));
         this.error = undefined;
     } else if (result.error) {
         this.caseList = undefined;
         this.error = result.error;
         }
-    }
-        
+    }   
 }

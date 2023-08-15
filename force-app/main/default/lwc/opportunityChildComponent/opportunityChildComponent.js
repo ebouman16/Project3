@@ -9,18 +9,23 @@ export default class OpportunityChildComponent extends LightningElement {
         {label: "Offer", fieldName: "Monthly_Price_offered__c", type: "currency"}
     ];
 
-oppList = [];
-error;
+    oppList = [];
+    error;
 
-@wire(getOpportunities)
-wired_oppList(result) {
-this.oppList = [];
-if (result.data) {
-    this.oppList = result.data;
-    this.error = undefined;
-} else if (result.error) {
-    this.oppList = undefined;
-    this.error = result.error;
+    @wire(getOpportunities)
+    wired_oppList(result) {
+    this.oppList = [];
+    if (result.data) {
+        this.oppList = result.data.map(element=>({
+            opportunityId:element.Id,
+            Name:element.Name,
+            Type:element.Type_of_Opportunity__c,
+            Offer:element.Monthly_Price_offered__c
+        }));
+        this.error = undefined;
+    } else if (result.error) {
+        this.oppList = undefined;
+        this.error = result.error;
+        }
     }
-}
-}
+    }
