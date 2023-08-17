@@ -6,7 +6,7 @@ export default class HomeExpenseChildComponent extends LightningElement {
         {label: "Name", fieldName: "Name", type: "text"},
         {label: "Type of Expense", fieldName: "Home_Expense_type__c", type: "text"},
         {label: "Due Date", fieldName: "Due_Date__c", type: "date", 
-            typeAttriutes:{day:'numeric', month:'short',year:'numeric'}},
+            typeAttributes:{day:'numeric', month:'short',year:'numeric'}},
         {label: "Paid?", fieldName: "Paid__c", type: "boolean"} 
 
     ];
