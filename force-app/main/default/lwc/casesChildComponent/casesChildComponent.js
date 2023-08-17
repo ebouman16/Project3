@@ -1,12 +1,15 @@
 import { LightningElement, wire } from 'lwc';
+import CASE_NUMBER_FIELD from "@salesforce/schema/Case.CaseNumber";
+import SUBJECT_FIELD from "@salesforce/schema/Case.Subject";
+import STATUS_FIELD from "@salesforce/schema/Case.Status";
 import getCases from '@salesforce/apex/CaseData.getCases';
 
 export default class CasesChildComponent extends LightningElement {
 
     colConfigs = [
-        {label: "Case Number", fieldName: "CaseNumber", type: "text"},
-        {label: "Subject", fieldName: "Subject", type: "text"},
-        {label: "Status", fieldName: "Status", type: "text"}
+        {label: "Case Number", fieldName: CASE_NUMBER_FIELD.fieldApiName, type: "text"},
+        {label: "Subject", fieldName: SUBJECT_FIELD.fieldApiName, type: "text"},
+        {label: "Status", fieldName: STATUS_FIELD.fieldApiName, type: "text"}
     ];
 
     caseList = [];

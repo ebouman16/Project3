@@ -1,12 +1,15 @@
 import { LightningElement, wire } from 'lwc';
+import NAME_FIELD from "@salesforce/schema/Opportunity.Name";
+import TYPE_FIELD from "@salesforce/schema/Opportunity.Type_of_Opportunity__c";
+import OFFER_FIELD from "@salesforce/schema/Opportunity.Monthly_Price_offered__c";
 import getOpportunities from '@salesforce/apex/OpportunityData.getOpportunities';
 
 export default class OpportunityChildComponent extends LightningElement {
 
     colConfigs = [
-        {label: "Name", fieldName: "Name", type: "text"},
-        {label: "Type", fieldName: "Type_of_Opportunity__c", type: "picklist"},
-        {label: "Offer", fieldName: "Monthly_Price_offered__c", type: "currency"}
+        {label: "Name", fieldName: NAME_FIELD.fieldApiName, type: "text"},
+        {label: "Type", fieldName: TYPE_FIELD.fieldApiName , type: "picklist"},
+        {label: "Offer", fieldName: OFFER_FIELD.fieldApiName, type: "currency"}
     ];
 
     oppList = [];
